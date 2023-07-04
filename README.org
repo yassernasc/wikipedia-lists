@@ -1,0 +1,15 @@
+* Wikipedia Lists
+
+Browser extension to manage wikipedia reading lists, completly
+
+** Features [0/4]
+
+- [ ] View all lists
+- [ ] Create a list
+- [ ] Select and Delete Lists
+- [ ] Open a list and... [0/5]
+  - [ ] Select and (Add to..., Move to..., Remove)
+  - [ ] Move an article from one list to another
+  - [ ] Edit Name
+  - [ ] Search
+  - [ ] Sort
