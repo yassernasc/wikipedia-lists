@@ -1,12 +1,12 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Wikipedia Lists",
   "version": "0.0",
   "description": "Manage your wikipedia reading lists, completly",
   "icons": { "48": "assets/icon_48x48.png", "128": "assets/icon_128x128.png" },
-  "browser_action": {
+  "action": {
     "default_icon": "assets/icon_48x48.png",
     "default_title": "Wikipedia Lists",
-    "default_popup": "dist/index.html"
+    "default_popup": "dist/home.html"
   }
 }

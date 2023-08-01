@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "firefox": "web-ext run --browser-console --devtools"
   },
   "dependencies": {
     "pinia": "^2.1.4",
@@ -25,6 +26,7 @@
     "jsdom": "^22.1.0",
     "prettier": "^3.0.0",
     "vite": "^4.4.6",
-    "vitest": "^0.33.0"
+    "vitest": "^0.33.0",
+    "web-ext": "^7.6.2"
   }
 }
