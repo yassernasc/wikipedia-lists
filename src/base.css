@@ -1,0 +1,15 @@
+@import '@wikimedia/codex/dist/codex.style.css';
+@import '@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.css';
+
+html,
+body {
+  line-height: var(--line-height-medium);
+}
+
+body {
+  font-family: var(--font-family-system-sans);
+  font-synthesis: style;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
