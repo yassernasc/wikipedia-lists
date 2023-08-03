@@ -13,3 +13,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+h1 {
+  font-size: var(--font-size-x-large);
+  font-weight: 600;
+}
