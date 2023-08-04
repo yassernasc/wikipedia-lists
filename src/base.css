@@ -1,5 +1,10 @@
 @import '@wikimedia/codex/dist/codex.style.css';
+@import 'the-new-css-reset/css/reset.css';
 @import '@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.css';
+
+:root {
+  --divider: rgba(60, 60, 67, 0.12);
+}
 
 html,
 body {
@@ -17,4 +22,15 @@ body {
 h1 {
   font-size: var(--font-size-x-large);
   font-weight: 600;
+}
+
+h2 {
+  font-size: var(--font-size-x-large);
+  line-height: var(--line-height-xxx-small);
+  font-weight: var(--font-weight-bold);
+}
+
+p {
+  line-height: var(--line-height-medium);
+  color: var(--color-base--subtle);
 }
