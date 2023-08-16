@@ -8,5 +8,7 @@
     "default_icon": "assets/icon_48x48.png",
     "default_title": "Wikipedia Lists",
     "default_popup": "dist/index.html"
-  }
+  },
+  "permissions": ["cookies"],
+  "host_permissions": ["*://*.wikipedia.org/"]
 }

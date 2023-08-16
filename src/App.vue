@@ -4,5 +4,6 @@ import '@/base.css'
 </script>
 
 <template>
+  <Header />
   <RouterView />
 </template>
