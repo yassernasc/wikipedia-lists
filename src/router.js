@@ -1,15 +1,15 @@
 import { createRouter, createMemoryHistory } from 'vue-router'
-import Home from '@/views/Home.vue'
-import Loading from '@/views/Loading.vue'
-import Login from '@/views/Login.vue'
+import HomePage from '@/views/HomePage.vue'
+import LoginPage from '@/views/LoginPage.vue'
+import ListPage from '@/views/ListPage.vue'
 
-export const RoutesMap = { home: 'home', loading: 'loading', login: 'login' }
+export const RoutesMap = { home: 'home', list: 'list', login: 'login' }
 
 export default createRouter({
   history: createMemoryHistory(),
   routes: [
-    { name: 'home', component: Home },
-    { name: 'loading', component: Loading },
-    { name: 'login', component: Login },
+    { name: RoutesMap.home, component: HomePage },
+    { name: RoutesMap.list, component: ListPage },
+    { name: RoutesMap.login, component: LoginPage },
   ],
 })

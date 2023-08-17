@@ -1,15 +1,23 @@
+<script setup>
+defineProps({ title: { type: String, default: 'Reading Lists' } })
+</script>
+
 <template>
   <header>
-    <h1>Reading Lists</h1>
+    <slot name="icon"></slot>
+    <h1>{{ title }}</h1>
   </header>
 </template>
 
 <style scoped>
 header {
-  height: var(--spacing-400);
-  display: flex;
   align-items: center;
-  padding: 0 8px 0 24px;
+  background-color: var(--background-color-base);
   border-bottom: var(--border-base);
+  display: flex;
+  height: var(--spacing-400);
+  padding: 0 8px 0 24px;
+  position: sticky;
+  top: 0;
 }
 </style>

@@ -2,21 +2,24 @@
 
 Browser extension to manage wikipedia reading lists, completly
 
-** Features [1/8]
+** Features [0/5]
 
 - [-] Auth
   - [X] Use cookies to get session tokens
   - [ ] Login Needed page
-- [X] Show all lists
-- [ ] Open a list and...
-  - [ ] Show articles
-  - [ ] Select and (Add to..., Move to..., Remove)
-  - [ ] Move an article from one list to another
-  - [ ] Edit Name
+- [-] Lists [1/4]
+  - [X] Show lists
   - [ ] Search
   - [ ] Sort
-- [ ] Create lists
-- [ ] Delete lists
+  - [ ] Create
+  - [ ] Delete
+- [-] Articles [1/6]
+  - [X] Show articles
+  - [ ] Search
+  - [ ] Sort
+  - [ ] Move
+  - [ ] Remove
+  - [ ] Edit Name
 - [ ] Save article from current tab
 - [-] Support
   - [X] Chrome

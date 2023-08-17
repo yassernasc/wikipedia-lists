@@ -18,18 +18,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  min-height: 600px;
   width: 320px;
 }
 
 h1 {
   font-size: var(--font-size-x-large);
-  font-weight: 600;
+  font-weight: var(--font-weight-semi-bold);
 }
 
 h2 {
-  font-size: var(--font-size-x-large);
-  line-height: var(--line-height-xxx-small);
+  color: var(--color-base);
   font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-small);
 }
 
 p {

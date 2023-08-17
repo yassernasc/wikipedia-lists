@@ -1,10 +1,10 @@
 <script setup>
-defineProps(['items'])
+defineProps(['items', 'callback'])
 </script>
 
 <template>
-  <div v-for="item in items" :key="item.id">
-    <h2>{{ item.name }}</h2>
+  <div v-for="item in items" :key="item.id" @click="callback(item)">
+    <h2>{{ item.name ?? item.title }}</h2>
   </div>
 </template>
 
