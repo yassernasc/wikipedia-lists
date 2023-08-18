@@ -6,7 +6,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:unit": "vitest",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "firefox": "web-ext run --browser-console --devtools"
@@ -29,10 +28,8 @@
     "@wikimedia/codex-icons": "^0.15.0",
     "eslint": "^8.45.0",
     "eslint-plugin-vue": "^9.15.1",
-    "jsdom": "^22.1.0",
     "prettier": "^3.0.0",
     "vite": "^4.4.6",
-    "vitest": "^0.33.0",
     "web-ext": "^7.6.2"
   }
 }
