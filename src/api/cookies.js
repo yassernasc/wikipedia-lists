@@ -1,3 +1,5 @@
+import { getCookies } from '@/extension'
+
 let cookieCache = null
 
 export default async () => {
@@ -5,7 +7,7 @@ export default async () => {
     return cookieCache
   }
 
-  const cookies = await chrome.cookies.getAll({})
+  const cookies = await getCookies()
 
   const required = ['centralauth_User', 'ss0-centralauth_Session']
   const requiredCookies = cookies

@@ -2,13 +2,14 @@
 import { CdxIcon } from '@wikimedia/codex'
 import { cdxIconArrowPrevious as PrevIcon } from '@wikimedia/codex-icons'
 
+import { createTab } from '@/extension'
 import { useWikiStore } from '@/stores'
 
 const store = useWikiStore()
 
 const onClick = ({ project, title }) => {
   const url = `${project}/wiki/${title}`
-  chrome.tabs.create({ url })
+  createTab(url)
 }
 </script>
 

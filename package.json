@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "vite",
+    "dev:firefox": "web-ext run --browser-console --devtools",
     "build": "vite build",
+    "build:firefox": "npm run build && cp manifest.firefox.json dist/manifest.json",
+    "build:chrome": "npm run build && cp manifest.chrome.json dist/manifest.json",
+    "postbuild": "cp -r assets dist",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "firefox": "web-ext run --browser-console --devtools"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "mitt": "^3.0.1",
