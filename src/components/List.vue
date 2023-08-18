@@ -1,21 +1,8 @@
 <script setup>
-defineProps(['items', 'callback'])
+defineProps(['items', 'menuItems'])
+const emit = defineEmits(['item-select', 'menu-click'])
 </script>
 
 <template>
-  <div v-for="item in items" :key="item.id" @click="callback(item)">
-    <h2>{{ item.name ?? item.title }}</h2>
-  </div>
+  <Card v-for="item in items" :key="item.id" :item="item" :emit="emit" :menuItems="menuItems" />
 </template>
-
-<style scoped>
-div {
-  padding: 15px 25px;
-  border-bottom: 1px solid var(--divider);
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-</style>

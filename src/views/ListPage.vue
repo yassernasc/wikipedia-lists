@@ -7,9 +7,18 @@ import { useWikiStore } from '@/stores'
 
 const store = useWikiStore()
 
+const menuItems = [
+  { label: 'Select', value: 'select' },
+  { label: 'Move', value: 'move' },
+  { label: 'Delete', value: 'delete' },
+]
+
 const onClick = ({ project, title }) => {
   const url = `${project}/wiki/${title}`
   createTab(url)
+}
+const onMenuClick = ({ item, operation }) => {
+  console.log({ list: item.id, operation })
 }
 </script>
 
@@ -21,12 +30,16 @@ const onClick = ({ project, title }) => {
       </span>
     </template>
   </Header>
-  <List :items="store.articles" :callback="onClick" />
+  <List
+    :items="store.articles"
+    @item-select="onClick"
+    :menuItems="menuItems"
+    @menu-click="onMenuClick"
+  />
 </template>
 
 <style scoped>
 .icon {
   margin-right: 15px;
-  cursor: pointer;
 }
 </style>

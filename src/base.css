@@ -37,3 +37,7 @@ p {
   line-height: var(--line-height-medium);
   color: var(--color-base--subtle);
 }
+
+.icon {
+  cursor: pointer;
+}
