@@ -3,10 +3,11 @@ import { defineStore } from 'pinia'
 import { useRouter } from 'vue-router'
 
 import { RoutesMap } from '@/router'
-import { getArticles, getLists, ErrorsMap } from '@/api'
+import { useApi } from '@/composables'
 
 export const useWikiStore = defineStore('wiki', () => {
   const router = useRouter()
+  const api = useApi()
 
   const lists = ref([])
   const articles = ref([])
@@ -16,30 +17,23 @@ export const useWikiStore = defineStore('wiki', () => {
     () => lists.value.find((l) => l.id === selectedList.value)?.name,
   )
 
-  const loadLists = () => {
-    const callbacks = getLists()
-    callbacks.on('lists', (newLists) => lists.value.push(...newLists))
-
-    callbacks.on('error', (err) => {
-      if (err === ErrorsMap.unauthorized) {
-        router.push({ name: RoutesMap.login })
-      }
-    })
+  const loadLists = async () => {
+    lists.value = await api.getLists()
+    router.push({ name: RoutesMap.home })
   }
 
   const selectList = async (listId) => {
     selectedList.value = listId
     router.push({ name: RoutesMap.list })
 
-    const loadedArticles = await getArticles(listId)
-    articles.value = loadedArticles
+    articles.value = await api.getArticles(listId)
   }
 
   const deselectList = () => {
     selectedList.value = null
     articles.value = []
 
-    router.back()
+    router.push({ name: RoutesMap.home })
   }
 
   return {

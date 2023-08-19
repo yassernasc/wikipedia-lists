@@ -1,13 +1,8 @@
-import { getCookies } from '@/extension'
+import { loadCookies } from '@/extension'
+import { unauthenticated } from '@/errors'
 
-let cookieCache = null
-
-export default async () => {
-  if (cookieCache) {
-    return cookieCache
-  }
-
-  const cookies = await getCookies()
+export const getCookies = async () => {
+  const cookies = await loadCookies()
 
   const required = ['centralauth_User', 'ss0-centralauth_Session']
   const requiredCookies = cookies
@@ -15,11 +10,10 @@ export default async () => {
     .map((c) => [c.name, c.value])
 
   if (requiredCookies.length !== required.length) {
-    return null
+    throw unauthenticated
   }
 
-  cookieCache = toCookieString(requiredCookies)
-  return cookieCache
+  return toCookieString(requiredCookies)
 }
 
 const toCookieString = (cookies) => cookies.map((c) => c.join('=')).join(';')
