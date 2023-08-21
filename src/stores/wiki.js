@@ -59,6 +59,13 @@ export const useWikiStore = defineStore('wiki', () => {
     api.deleteList(listId)
   }
 
+  const deleteArticle = ({ listId, articleId }) => {
+    const index = articles.value.findIndex((a) => a.id === articleId)
+    articles.value.splice(index, 1)
+
+    api.deleteArticle({ listId, articleId })
+  }
+
   return {
     articles,
     createList,
@@ -71,5 +78,6 @@ export const useWikiStore = defineStore('wiki', () => {
     selectedList,
     selectedListName,
     updateList,
+    deleteArticle,
   }
 })

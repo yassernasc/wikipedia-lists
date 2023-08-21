@@ -44,7 +44,18 @@ export const useApi = () => {
 
   const deleteList = (listId) => byToken.value.delete(`/${listId}`)
 
-  return { getLists, createList, updateList, deleteList, updateList, getArticles }
+  const deleteArticle = ({ listId, articleId }) =>
+    byToken.value.delete(`/${listId}/entries/${articleId}`)
+
+  return {
+    createList,
+    deleteArticle,
+    deleteList,
+    getArticles,
+    getLists,
+    updateList,
+    updateList,
+  }
 }
 
 const hardcodedLists = [
