@@ -15,10 +15,10 @@ Browser extension to manage wikipedia reading lists, completly
   - [X] Update
   - [ ] Sort
   - [ ] Search
-- [-] Articles [1/6]
+- [-] Articles [3/6]
   - [X] Show articles
-  - [ ] Move
-  - [ ] Remove
+  - [X] Move
+  - [X] Remove
   - [ ] Select
   - [ ] Sort
   - [ ] Search

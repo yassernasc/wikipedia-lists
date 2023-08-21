@@ -1,15 +1,17 @@
 <script setup>
+import { ref } from 'vue'
 import { CdxIcon } from '@wikimedia/codex'
 import { cdxIconArrowPrevious as prevIcon } from '@wikimedia/codex-icons'
 
+import SelectList from '@/components/SelectList.vue'
 import { createTab } from '@/extension'
 import { useWikiStore } from '@/stores'
 
 const wiki = useWikiStore()
+const dialogRef = ref()
 
 const menuItems = [
-  { label: 'Select', value: 'select', disabled: true },
-  { label: 'Move', value: 'move', disabled: true },
+  { label: 'Move', value: 'move' },
   { label: 'Delete', value: 'delete' },
 ]
 
@@ -18,9 +20,14 @@ const onClick = ({ project, title }) => {
   createTab(url)
 }
 const onMenuClick = ({ item, operation }) => {
+  const { id: articleId, listId } = item
+
   if (operation === 'delete') {
-    const { id: articleId, listId } = item
     wiki.deleteArticle({ articleId, listId })
+  }
+
+  if (operation === 'move') {
+    dialogRef.value.open(articleId)
   }
 }
 </script>
@@ -39,6 +46,7 @@ const onMenuClick = ({ item, operation }) => {
     :menuItems="menuItems"
     @menu-click="onMenuClick"
   />
+  <SelectList ref="dialogRef" />
 </template>
 
 <style scoped>

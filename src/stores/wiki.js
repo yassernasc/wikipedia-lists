@@ -66,18 +66,30 @@ export const useWikiStore = defineStore('wiki', () => {
     api.deleteArticle({ listId, articleId })
   }
 
+  const moveArticle = ({ currentListId, newListId, articleId }) => {
+    const { project, title } = articles.value.find((a) => a.id === articleId)
+    const data = { project, title }
+    addArticle({ listId: newListId, data })
+
+    deleteArticle({ listId: currentListId, articleId })
+  }
+
+  const addArticle = ({ listId, data }) => api.addArticle({ listId, data })
+
   return {
+    addArticle,
     articles,
     createList,
+    deleteArticle,
     deleteList,
     deselectList,
     lists,
     loadLists,
+    moveArticle,
     reloadLists,
     selectList,
     selectedList,
     selectedListName,
     updateList,
-    deleteArticle,
   }
 })
