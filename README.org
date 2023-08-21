@@ -2,7 +2,7 @@
 
 Browser extension to manage wikipedia reading lists, completly
 
-** Features [0/5]
+** Features [1/5]
 
 - [-] Auth
   - [X] Use cookies to get session tokens
@@ -22,7 +22,7 @@ Browser extension to manage wikipedia reading lists, completly
   - [ ] Select
   - [ ] Sort
   - [ ] Search
-- [ ] Save article from current tab
+- [X] Save article from current tab
 - [-] Support [2/3]
   - [X] Chrome
   - [X] Firefox

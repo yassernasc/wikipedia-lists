@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 import { RoutesMap } from '@/router'
 import { useApi } from '@/composables'
+import { getCurrentTabUrl } from '@/extension'
 
 export const useWikiStore = defineStore('wiki', () => {
   const router = useRouter()
@@ -69,15 +70,27 @@ export const useWikiStore = defineStore('wiki', () => {
   const moveArticle = ({ currentListId, newListId, articleId }) => {
     const { project, title } = articles.value.find((a) => a.id === articleId)
     const data = { project, title }
-    addArticle({ listId: newListId, data })
 
+    addArticle({ listId: newListId, data })
     deleteArticle({ listId: currentListId, articleId })
   }
 
   const addArticle = ({ listId, data }) => api.addArticle({ listId, data })
 
+  const addCurrentUrl = async () => {
+    const formatTitle = (title) => decodeURIComponent(title).replaceAll('_', ' ')
+
+    const url = await getCurrentTabUrl()
+    const [project, title] = url.split('/wiki/')
+    const data = { project, title: formatTitle(title) }
+
+    const newArticle = await addArticle({ listId: selectedList.value, data })
+    articles.value.unshift(newArticle)
+  }
+
   return {
     addArticle,
+    addCurrentUrl,
     articles,
     createList,
     deleteArticle,

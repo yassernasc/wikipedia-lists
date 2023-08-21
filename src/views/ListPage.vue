@@ -1,14 +1,22 @@
 <script setup>
-import { ref } from 'vue'
-import { CdxIcon } from '@wikimedia/codex'
+import { ref, onMounted } from 'vue'
+import { CdxIcon, CdxButton } from '@wikimedia/codex'
 import { cdxIconArrowPrevious as prevIcon } from '@wikimedia/codex-icons'
 
 import SelectList from '@/components/SelectList.vue'
-import { createTab } from '@/extension'
+import { createTab, getCurrentTabUrl } from '@/extension'
 import { useWikiStore } from '@/stores'
 
 const wiki = useWikiStore()
+const currentTabIsWikipedia = ref(false)
 const dialogRef = ref()
+
+onMounted(async () => {
+  const url = await getCurrentTabUrl()
+  if (url.includes('wikipedia') && url.includes('/wiki/')) {
+    currentTabIsWikipedia.value = true
+  }
+})
 
 const menuItems = [
   { label: 'Move', value: 'move' },
@@ -19,6 +27,7 @@ const onClick = ({ project, title }) => {
   const url = `${project}/wiki/${title}`
   createTab(url)
 }
+
 const onMenuClick = ({ item, operation }) => {
   const { id: articleId, listId } = item
 
@@ -30,6 +39,11 @@ const onMenuClick = ({ item, operation }) => {
     dialogRef.value.open(articleId)
   }
 }
+
+const onAddCurrentUrl = async () => {
+  await wiki.addCurrentUrl()
+  currentTabIsWikipedia.value = false
+}
 </script>
 
 <template>
@@ -38,6 +52,12 @@ const onMenuClick = ({ item, operation }) => {
       <span class="icon" @click="wiki.deselectList">
         <cdx-icon :icon="prevIcon" />
       </span>
+    </template>
+
+    <template v-slot:actions v-if="currentTabIsWikipedia">
+      <cdx-button class="add-button" action="progressive" weight="quiet" @click="onAddCurrentUrl"
+        >Add current tab</cdx-button
+      >
     </template>
   </Header>
   <List
@@ -52,5 +72,9 @@ const onMenuClick = ({ item, operation }) => {
 <style scoped>
 .icon {
   margin-right: 15px;
+}
+
+.add-button {
+  margin-left: auto;
 }
 </style>

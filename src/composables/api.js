@@ -15,6 +15,7 @@ export const useApi = () => {
   const byToken = computed(() => wikiApi.query({ csrf_token: auth.token }))
 
   const getLists = async (next = '""') => {
+    // return hardcodedLists
     const { lists, next: newNext } = await wikiApi.query({ next }).get('/')
 
     if (newNext) {
@@ -26,6 +27,7 @@ export const useApi = () => {
   }
 
   const getArticles = async (listId) => {
+    // return hardcodedArticles
     const { entries } = await wikiApi.get(`/${listId}/entries/`)
     return entries
   }
@@ -45,7 +47,10 @@ export const useApi = () => {
   const deleteArticle = ({ listId, articleId }) =>
     byToken.value.delete(`/${listId}/entries/${articleId}`)
 
-  const addArticle = ({ listId, data }) => byToken.value.post(data, `/${listId}/entries/`)
+  const addArticle = async ({ listId, data }) => {
+    const { entry } = await byToken.value.post(data, `/${listId}/entries/`)
+    return entry
+  }
 
   return {
     addArticle,
