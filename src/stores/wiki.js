@@ -22,6 +22,11 @@ export const useWikiStore = defineStore('wiki', () => {
     router.push({ name: RoutesMap.home })
   }
 
+  const reloadLists = async () => {
+    lists.value = []
+    lists.value = await api.getLists()
+  }
+
   const selectList = async (listId) => {
     selectedList.value = listId
     router.push({ name: RoutesMap.list })
@@ -36,11 +41,26 @@ export const useWikiStore = defineStore('wiki', () => {
     router.push({ name: RoutesMap.home })
   }
 
+  const createList = async (form) => {
+    const newList = await api.createList(form)
+    lists.value.unshift(newList)
+  }
+
+  const deleteList = async (listId) => {
+    const index = lists.value.findIndex((l) => l.id === listId)
+    lists.value.splice(index, 1)
+
+    api.deleteList(listId)
+  }
+
   return {
     articles,
+    createList,
+    deleteList,
     deselectList,
     lists,
     loadLists,
+    reloadLists,
     selectList,
     selectedList,
     selectedListName,

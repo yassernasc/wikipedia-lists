@@ -6,6 +6,7 @@ defineProps({ title: { type: String, default: 'Reading Lists' } })
   <header>
     <slot name="icon"></slot>
     <h1>{{ title }}</h1>
+    <slot name="actions"></slot>
   </header>
 </template>
 

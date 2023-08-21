@@ -7,11 +7,12 @@ Browser extension to manage wikipedia reading lists, completly
 - [-] Auth
   - [X] Use cookies to get session tokens
   - [ ] Login Needed page
-- [-] Lists [1/6]
+- [-] Lists [3/7]
   - [X] Show lists
+  - [X] Reload
+  - [X] Create
   - [ ] Sort
   - [ ] Search
-  - [ ] Create
   - [ ] Update
   - [ ] Delete
 - [-] Articles [1/5]

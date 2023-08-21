@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { CdxIcon, CdxMenu, useGeneratedId } from '@wikimedia/codex'
-import { cdxIconEllipsis as DotsIcon } from '@wikimedia/codex-icons'
+import { cdxIconEllipsis as dotsIcon } from '@wikimedia/codex-icons'
+import Menu from '@/components/Menu.vue'
 
 defineProps(['item', 'emit', 'menuItems'])
 
@@ -12,9 +13,9 @@ const openMenu = () => menuRef.value.open()
 <template>
   <div class="card">
     <div class="text-container" @click="emit('item-select', item)">
-      <h2>{{ item.title ?? item.name }}</h2>
+      <h2 class="card-title">{{ item.title ?? item.name }}</h2>
     </div>
-    <CdxIcon class="icon" :icon="DotsIcon" @click="openMenu" />
+    <cdx-icon class="icon" :icon="dotsIcon" @click="openMenu" />
   </div>
   <Menu
     ref="menuRef"
@@ -30,6 +31,12 @@ const openMenu = () => menuRef.value.open()
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid var(--divider);
+}
+
+.card-title {
+  color: var(--color-base);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-small);
 }
 
 .text-container {

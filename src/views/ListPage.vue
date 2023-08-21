@@ -1,6 +1,6 @@
 <script setup>
 import { CdxIcon } from '@wikimedia/codex'
-import { cdxIconArrowPrevious as PrevIcon } from '@wikimedia/codex-icons'
+import { cdxIconArrowPrevious as prevIcon } from '@wikimedia/codex-icons'
 
 import { createTab } from '@/extension'
 import { useWikiStore } from '@/stores'
@@ -8,9 +8,9 @@ import { useWikiStore } from '@/stores'
 const store = useWikiStore()
 
 const menuItems = [
-  { label: 'Select', value: 'select' },
-  { label: 'Move', value: 'move' },
-  { label: 'Delete', value: 'delete' },
+  { label: 'Select', value: 'select', disabled: true },
+  { label: 'Move', value: 'move', disabled: true },
+  { label: 'Delete', value: 'delete', disabled: true },
 ]
 
 const onClick = ({ project, title }) => {
@@ -26,7 +26,7 @@ const onMenuClick = ({ item, operation }) => {
   <Header :title="store.selectedListName">
     <template v-slot:icon>
       <span class="icon" @click="store.deselectList">
-        <CdxIcon :icon="PrevIcon" />
+        <cdx-icon :icon="prevIcon" />
       </span>
     </template>
   </Header>

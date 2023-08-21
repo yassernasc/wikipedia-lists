@@ -19,7 +19,7 @@ defineExpose({ open })
 </script>
 
 <template>
-  <CdxMenu
+  <cdx-menu
     class="menu"
     ref="menu"
     v-model:expanded="isOpen"

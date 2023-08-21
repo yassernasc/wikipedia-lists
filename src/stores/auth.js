@@ -17,6 +17,7 @@ export const useAuthStore = defineStore('auth', () => {
   const authenticate = async () => {
     try {
       const [newCookies, newToken] = await Promise.all([getCookies(), getToken()])
+
       cookies.value = newCookies
       token.value = newToken
 

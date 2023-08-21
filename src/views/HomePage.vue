@@ -1,33 +1,52 @@
 <script setup>
-import { onMounted } from 'vue'
+import { ref } from 'vue'
+import { CdxIcon } from '@wikimedia/codex'
+import { cdxIconAdd as addIcon, cdxIconReload as reloadIcon } from '@wikimedia/codex-icons'
 import { useWikiStore } from '@/stores'
+import CreateList from '@/components/CreateList.vue'
 
-const store = useWikiStore()
+const wiki = useWikiStore()
+
+const dialogRef = ref()
 
 const menuItems = [
-  { label: 'Select', value: 'select' },
-  { label: 'Update', value: 'update' },
+  { label: 'Select', value: 'select', disabled: true },
+  { label: 'Update', value: 'update', disabled: true },
   { label: 'Delete', value: 'delete' },
 ]
 
-const onSelect = (list) => store.selectList(list.id)
+const onCreate = () => dialogRef.value.open()
+const onSelect = (list) => wiki.selectList(list.id)
 const onMenuClick = ({ item, operation }) => {
-  console.log({ list: item.id, operation })
-}
-
-onMounted(() => {
-  if (store.lists.length === 0) {
-    store.loadLists()
+  if (operation === 'delete') {
+    wiki.deleteList(item.id)
   }
-})
+}
 </script>
 
 <template>
-  <Header />
+  <Header>
+    <template v-slot:actions>
+      <div class="actions" @click="wiki.deselectList">
+        <cdx-icon class="icon" :icon="reloadIcon" @click="wiki.reloadLists" />
+        <cdx-icon class="icon" :icon="addIcon" @click="onCreate" />
+      </div>
+    </template>
+  </Header>
   <List
-    :items="store.lists"
-    @item-select="onSelect"
+    :items="wiki.lists"
     :menuItems="menuItems"
+    @item-select="onSelect"
     @menu-click="onMenuClick"
   />
+  <CreateList ref="dialogRef" />
 </template>
+
+<style scoped>
+.actions {
+  margin-left: auto;
+  margin-right: 4px;
+  display: flex;
+  gap: 7px;
+}
+</style>

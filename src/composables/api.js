@@ -1,4 +1,4 @@
-import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 import wretch from 'wretch'
 import QueryStringAddon from 'wretch/addons/queryString'
 import { useAuthStore } from '@/stores'
@@ -6,31 +6,38 @@ import { useAuthStore } from '@/stores'
 const baseUrl = 'https://en.wikipedia.org/api/rest_v1/data/lists'
 const wikiApi = wretch(baseUrl)
   .addon(QueryStringAddon)
-  .resolve((r) => r.json())
+  .resolve((r) => r?.json())
 
 export const useApi = () => {
   const auth = useAuthStore()
-  const { cookie, token } = storeToRefs(auth)
 
-  const byCookie = wikiApi.headers({ Cookie: cookie })
-  const byToken = wikiApi.query({ csrf_token: token })
+  // const byCookie = computed(() => wikiApi.headers({ Cookie: auth.cookie }))
+  const byToken = computed(() => wikiApi.query({ csrf_token: auth.token }))
 
   const getLists = async (next = '""') => {
-    const { lists, next: newNext } = await byCookie.query({ next }).get('/')
+    const { lists, next: newNext } = await wikiApi.query({ next }).get('/')
 
     if (newNext) {
-      lists.push(...(await getLists(newNext)))
+      const newLists = await getLists(newNext)
+      lists.push(...newLists)
     }
 
     return lists
   }
 
   const getArticles = async (listId) => {
-    const { entries } = await byCookie.get(`/${listId}/entries/`)
+    const { entries } = await wikiApi.get(`/${listId}/entries/`)
     return entries
   }
 
-  return { getLists, getArticles }
+  const createList = async (form) => {
+    const { list } = await byToken.value.post(form, '/')
+    return list
+  }
+
+  const deleteList = (listId) => byToken.value.delete(`/${listId}`)
+
+  return { getLists, getArticles, createList, deleteList }
 }
 
 /*
