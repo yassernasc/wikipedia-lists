@@ -15,6 +15,7 @@ export const useApi = () => {
   const byToken = computed(() => wikiApi.query({ csrf_token: auth.token }))
 
   const getLists = async (next = '""') => {
+    // return hardcodedLists
     const { lists, next: newNext } = await wikiApi.query({ next }).get('/')
 
     if (newNext) {
@@ -26,6 +27,7 @@ export const useApi = () => {
   }
 
   const getArticles = async (listId) => {
+    // return hardcodedArticles
     const { entries } = await wikiApi.get(`/${listId}/entries/`)
     return entries
   }
@@ -35,12 +37,16 @@ export const useApi = () => {
     return list
   }
 
+  const updateList = async ({ id, form }) => {
+    const { list } = await byToken.value.put(form, `/${id}`)
+    return list
+  }
+
   const deleteList = (listId) => byToken.value.delete(`/${listId}`)
 
-  return { getLists, getArticles, createList, deleteList }
+  return { getLists, createList, updateList, deleteList, updateList, getArticles }
 }
 
-/*
 const hardcodedLists = [
   {
     id: 3648265,
@@ -87,4 +93,3 @@ const hardcodedArticles = [
     title: 'List of terminal emulators',
   },
 ]
-*/

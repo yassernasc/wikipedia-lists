@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.3.0",
-    "mitt": "^3.0.1",
     "pinia": "^2.1.4",
     "the-new-css-reset": "^1.9.0",
     "vue": "^3.3.4",

@@ -3,21 +3,23 @@ import { ref } from 'vue'
 import { CdxIcon } from '@wikimedia/codex'
 import { cdxIconAdd as addIcon, cdxIconReload as reloadIcon } from '@wikimedia/codex-icons'
 import { useWikiStore } from '@/stores'
-import CreateList from '@/components/CreateList.vue'
+import ListForm from '@/components/ListForm.vue'
 
 const wiki = useWikiStore()
-
 const dialogRef = ref()
 
 const menuItems = [
-  { label: 'Select', value: 'select', disabled: true },
-  { label: 'Update', value: 'update', disabled: true },
+  { label: 'Update', value: 'update' },
   { label: 'Delete', value: 'delete' },
 ]
 
 const onCreate = () => dialogRef.value.open()
 const onSelect = (list) => wiki.selectList(list.id)
 const onMenuClick = ({ item, operation }) => {
+  if (operation === 'update') {
+    dialogRef.value.open(item)
+  }
+
   if (operation === 'delete') {
     wiki.deleteList(item.id)
   }
@@ -39,7 +41,7 @@ const onMenuClick = ({ item, operation }) => {
     @item-select="onSelect"
     @menu-click="onMenuClick"
   />
-  <CreateList ref="dialogRef" />
+  <ListForm ref="dialogRef" />
 </template>
 
 <style scoped>

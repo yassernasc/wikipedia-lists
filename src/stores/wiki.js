@@ -46,7 +46,13 @@ export const useWikiStore = defineStore('wiki', () => {
     lists.value.unshift(newList)
   }
 
-  const deleteList = async (listId) => {
+  const updateList = ({ id, form }) => {
+    lists.value.find((l) => l.id === id).name = form.name
+
+    api.updateList({ id, form })
+  }
+
+  const deleteList = (listId) => {
     const index = lists.value.findIndex((l) => l.id === listId)
     lists.value.splice(index, 1)
 
@@ -64,5 +70,6 @@ export const useWikiStore = defineStore('wiki', () => {
     selectList,
     selectedList,
     selectedListName,
+    updateList,
   }
 })

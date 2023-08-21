@@ -6,14 +6,39 @@ import { useWikiStore } from '@/stores'
 const wiki = useWikiStore()
 
 const isOpen = ref(false)
-const open = () => (isOpen.value = true)
+const itemId = ref(null)
 const form = ref({ name: '', description: '' })
-const resetForm = () => (form.value = { name: '', description: '' })
+
+const resetForm = () => {
+  form.value = { name: '', description: '' }
+  itemId.value = null
+}
+
+const open = (item) => {
+  if (item) {
+    const { id, name, description } = item
+    itemId.value = id
+    form.value = { name, description }
+  }
+
+  isOpen.value = true
+}
+
 watch(isOpen, (updatedIsOpen) => {
   if (!updatedIsOpen) {
     resetForm()
   }
 })
+
+const onPrimary = () => {
+  if (itemId.value) {
+    wiki.updateList({ id: itemId.value, form: form.value })
+  } else {
+    wiki.createList(form.value)
+  }
+
+  isOpen.value = false
+}
 
 const primaryAction = computed(() => ({
   label: 'OK',
@@ -23,23 +48,18 @@ const primaryAction = computed(() => ({
 
 const defaultAction = { label: 'Cancel' }
 
-const onCreate = () => {
-  wiki.createList(form.value)
-  isOpen.value = false
-}
-
 defineExpose({ open })
 </script>
 
 <template>
   <cdx-dialog
     v-model:open="isOpen"
-    title="Create new list"
     close-button-label="Close"
+    :title="itemId ? 'Update list' : 'Create new list'"
     :primary-action-disabled="isOpen"
     :primary-action="primaryAction"
     :default-action="defaultAction"
-    @primary="onCreate"
+    @primary="onPrimary"
     @default="isOpen = false"
   >
     <form>
