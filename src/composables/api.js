@@ -11,7 +11,6 @@ const wikiApi = wretch(baseUrl)
 export const useApi = () => {
   const auth = useAuthStore()
 
-  // const byCookie = computed(() => wikiApi.headers({ Cookie: auth.cookie }))
   const byToken = computed(() => wikiApi.query({ csrf_token: auth.token }))
 
   const getLists = async (next = '""') => {

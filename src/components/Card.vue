@@ -30,12 +30,12 @@ const openMenu = () => menuRef.value.open()
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid var(--divider);
+  border-bottom: 1px solid var(--background-color-interactive);
 }
 
 .card-title {
   color: var(--color-base);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semi-bold);
   line-height: var(--line-height-small);
 }
 

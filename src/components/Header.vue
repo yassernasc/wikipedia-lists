@@ -21,4 +21,14 @@ header {
   position: sticky;
   top: 0;
 }
+
+header h1 {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-x-large);
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 140px;
+  overflow: hidden;
+}
 </style>

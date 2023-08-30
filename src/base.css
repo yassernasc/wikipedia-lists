@@ -2,17 +2,15 @@
 @import '@wikimedia/codex/dist/codex.style.css';
 @import '@wikimedia/codex-design-tokens/dist/theme-wikimedia-ui.css';
 
-:root {
-  --divider: rgba(60, 60, 67, 0.12);
-}
-
 html,
 body {
   line-height: var(--line-height-medium);
+  font-size: 14px;
 }
 
 body {
-  font-family: var(--font-family-system-sans);
+  font-family: var(--font-family-base);
+
   font-synthesis: style;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -22,11 +20,7 @@ body {
   width: 320px;
 }
 
-h1 {
-  font-size: var(--font-size-x-large);
-  font-weight: var(--font-weight-semi-bold);
-}
-
 .icon {
+  display: flex; /* center svg */
   cursor: pointer;
 }

@@ -76,5 +76,7 @@ const onAddCurrentUrl = async () => {
 
 .add-button {
   margin-left: auto;
+  margin-right: -10px;
+  transform: scale(0.85);
 }
 </style>
