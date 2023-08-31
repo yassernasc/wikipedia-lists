@@ -34,7 +34,6 @@ const openMenu = () => menuRef.value.open()
 }
 
 .card-title {
-  color: var(--color-base);
   font-weight: var(--font-weight-semi-bold);
   line-height: var(--line-height-small);
 }

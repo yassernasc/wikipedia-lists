@@ -1,11 +1,15 @@
 <script setup>
+import { ref, useSlots } from 'vue'
+
 defineProps({ title: { type: String, default: 'Reading Lists' } })
+
+const slots = useSlots()
 </script>
 
 <template>
   <header>
     <slot name="icon"></slot>
-    <h1>{{ title }}</h1>
+    <h1 :class="{ ellipsis: !!slots.actions }">{{ title }}</h1>
     <slot name="actions"></slot>
   </header>
 </template>
@@ -25,10 +29,12 @@ header {
 header h1 {
   font-family: var(--font-family-serif);
   font-size: var(--font-size-x-large);
+}
 
+.ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 140px;
+  width: 130px;
   overflow: hidden;
 }
 </style>
