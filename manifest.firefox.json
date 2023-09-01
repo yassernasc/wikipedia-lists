@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Wikipedia Lists",
-  "version": "0.0",
+  "version": "0.1",
   "description": "Use wikipedia reading lists, just like in the apps",
   "icons": { "48": "assets/icon_48x48.png", "128": "assets/icon_128x128.png" },
   "browser_action": {

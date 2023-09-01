@@ -1,6 +1,12 @@
+[[./assets/icon_48x48.png]]
+
 * Wikipedia Lists
 
 Browser extension to use wikipedia reading lists, just like in the apps
+
+** Demo
+
+[[./assets/demo.gif]]
 
 ** Features [2/5]
 
