@@ -1,19 +1,19 @@
 * Wikipedia Lists
 
-Browser extension to manage wikipedia reading lists, completly
+Browser extension to use wikipedia reading lists, just like in the apps
 
 ** Features [2/5]
 
 - [X] Auth
   - [X] Use cookies to get session tokens
   - [X] Login Needed page
-- [-] Lists [5/7]
+- [-] Lists [6/7]
   - [X] Show lists
   - [X] Reload
   - [X] Create
   - [X] Delete
   - [X] Update
-  - [ ] Sort
+  - [X] Sort
   - [ ] Search
 - [-] Articles [3/6]
   - [X] Show articles

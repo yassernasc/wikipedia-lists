@@ -2,6 +2,7 @@ import { computed } from 'vue'
 import wretch from 'wretch'
 import QueryStringAddon from 'wretch/addons/queryString'
 import { useAuthStore } from '@/stores'
+import { usePanic } from '@/composables'
 
 const baseUrl = 'https://en.wikipedia.org/api/rest_v1/data/lists'
 const wikiApi = wretch(baseUrl)
@@ -10,15 +11,36 @@ const wikiApi = wretch(baseUrl)
 
 export const useApi = () => {
   const auth = useAuthStore()
+  const panic = usePanic()
+
+  const onError = (err) => {
+    panic.ohShit(err)
+    throw err
+  }
 
   const byToken = computed(() => wikiApi.query({ csrf_token: auth.token }))
 
-  const getLists = async (next = '""') => {
+  const setup = () => byToken.value.post({}, '/setup').catch()
+
+  const getLists = async (firstTry = true) => {
+    try {
+      return await _getLists()
+    } catch (err) {
+      if (firstTry && err.status === 400) {
+        await setup() // enable reading lists feature
+        return await getLists(false)
+      } else {
+        onError(err)
+      }
+    }
+  }
+
+  const _getLists = async (next = '""') => {
     // return hardcodedLists
     const { lists, next: newNext } = await wikiApi.query({ next }).get('/')
 
     if (newNext) {
-      const newLists = await getLists(newNext)
+      const newLists = await _getLists(newNext)
       lists.push(...newLists)
     }
 
@@ -27,28 +49,55 @@ export const useApi = () => {
 
   const getArticles = async (listId) => {
     // return hardcodedArticles
-    const { entries } = await wikiApi.get(`/${listId}/entries/`)
-    return entries
+    try {
+      const { entries } = await wikiApi.get(`/${listId}/entries/`)
+      return entries
+    } catch (err) {
+      onError(err)
+    }
   }
 
   const createList = async (form) => {
-    const { list } = await byToken.value.post(form, '/')
-    return list
+    try {
+      const { list } = await byToken.value.post(form, '/')
+      return list
+    } catch (err) {
+      onError(err)
+    }
   }
 
   const updateList = async ({ id, form }) => {
-    const { list } = await byToken.value.put(form, `/${id}`)
-    return list
+    try {
+      const { list } = await byToken.value.put(form, `/${id}`)
+      return list
+    } catch (err) {
+      onError(err)
+    }
   }
 
-  const deleteList = (listId) => byToken.value.delete(`/${listId}`)
+  const deleteList = (listId) => {
+    try {
+      byToken.value.delete(`/${listId}`)
+    } catch (err) {
+      onError(err)
+    }
+  }
 
-  const deleteArticle = ({ listId, articleId }) =>
-    byToken.value.delete(`/${listId}/entries/${articleId}`)
+  const deleteArticle = ({ listId, articleId }) => {
+    try {
+      byToken.value.delete(`/${listId}/entries/${articleId}`)
+    } catch (err) {
+      onError(err)
+    }
+  }
 
   const addArticle = async ({ listId, data }) => {
-    const { entry } = await byToken.value.post(data, `/${listId}/entries/`)
-    return entry
+    try {
+      const { entry } = await byToken.value.post(data, `/${listId}/entries/`)
+      return entry
+    } catch (err) {
+      onError(err)
+    }
   }
 
   return {

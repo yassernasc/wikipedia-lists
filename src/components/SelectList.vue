@@ -31,7 +31,7 @@ watch(isOpen, (updatedIsOpen) => {
 })
 
 const menuItems = computed(() =>
-  wiki.lists.map((l) => ({
+  wiki.sortedLists.map((l) => ({
     label: l.name,
     value: l.id,
     disabled: l.id === wiki.selectedList,

@@ -18,6 +18,10 @@ export const useWikiStore = defineStore('wiki', () => {
     () => lists.value.find((l) => l.id === selectedList.value)?.name,
   )
 
+  const sortedLists = computed(() =>
+    lists.value.sort((a, b) => (a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1)),
+  )
+
   const loadLists = async () => {
     lists.value = await api.getLists()
     router.push({ name: RoutesMap.home })
@@ -103,6 +107,7 @@ export const useWikiStore = defineStore('wiki', () => {
     selectList,
     selectedList,
     selectedListName,
+    sortedLists,
     updateList,
   }
 })
