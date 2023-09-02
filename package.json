@@ -1,17 +1,21 @@
 {
   "name": "wikipedia-lists",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
+  "os": ["darwin", "linux"],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "vite",
     "dev:firefox": "web-ext run --browser-console --devtools",
     "build": "vite build",
-    "build:firefox": "npm run build && cp manifest.firefox.json dist/manifest.json",
     "build:chrome": "npm run build && cp manifest.chrome.json dist/manifest.json",
-    "postbuild": "cp -r assets dist",
-    "preview": "vite preview",
+    "build:firefox": "npm run build && cp manifest.firefox.json dist/manifest.json",
+    "postbuild": "cp -r assets/*.png dist/assets",
+    "format": "prettier --write src/",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "pack:firefox": "npm run build:firefox && web-ext build -o -s dist"
   },
   "dependencies": {
     "@vueuse/core": "^10.3.0",
@@ -25,7 +29,6 @@
     "@rushstack/eslint-patch": "^1.3.2",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-prettier": "^8.0.0",
-    "@vue/test-utils": "^2.4.1",
     "@wikimedia/codex": "^0.15.0",
     "@wikimedia/codex-design-tokens": "^0.15.0",
     "@wikimedia/codex-icons": "^0.15.0",

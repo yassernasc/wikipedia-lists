@@ -2,13 +2,25 @@
 
 * Wikipedia Lists
 
-Browser extension to use wikipedia reading lists, just like in the apps
+Browser extension to use Wikipedia's Reading Lists, just like in the apps
+
+** Why?
+
+The year was 2018 and Wikipedia released [[https://wikimediafoundation.org/news/2018/05/25/synced-reading-lists/][Synced reading lists for its mobile apps]], but what about the Browser and Desktop? 5 years later, the [[https://www.mediawiki.org/wiki/Wikimedia_Apps/Reading_list_browser_extension][official extension]] remains pretty minimalist.
+
+I have found Wikipedia's Reading Lists to be a wonderful way to organize research. And not being able to manage them on my main work device was the primary motivation for developing the extension. And I truly hope this extension can be useful to other people as well.
+
+** Principles
+
+- *Full-featured*, the extension aims to cover all features from mobile apps, and possibly go further.
+- *Privacy-friendly*, no information is stored anywhere by extension's domains.
+- *Fair user experience*, the extension follows the [[https://design.wikimedia.org/style-guide/][Wikipedia's Design Style Guide]].
 
 ** Demo
 
 [[./assets/demo.gif]]
 
-** Features [2/5]
+** Features and Roadmap [2/5]
 
 - [X] Auth
   - [X] Use cookies to get session tokens
@@ -33,3 +45,27 @@ Browser extension to use wikipedia reading lists, just like in the apps
   - [X] Chrome
   - [X] Firefox
   - [ ] Safari
+
+** Running and Building from source
+
+warn: not tested on windows environment
+
+*First steps*
+
+#+begin_src shell
+  # install node.js, version >=18
+  git clone https://github.com/yassernasc/wikipedia-lists.git
+  npm install
+#+end_src
+
+*Run on Firefox*
+
+#+begin_src shell
+  npm run dev:firefox
+#+end_src
+
+*Build for Firefox*
+
+#+begin_src shell
+  npm run build:firefox
+#+end_src
