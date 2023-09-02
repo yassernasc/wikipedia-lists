@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { CdxIcon, CdxMenu, useGeneratedId } from '@wikimedia/codex'
+import { CdxIcon } from '@wikimedia/codex'
 import { cdxIconEllipsis as dotsIcon } from '@wikimedia/codex-icons'
 import Menu from '@/components/Menu.vue'
 

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, useSlots } from 'vue'
+import { useSlots } from 'vue'
 
 defineProps({ title: { type: String, default: 'Reading Lists' } })
 

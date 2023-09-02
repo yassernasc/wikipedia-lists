@@ -1,5 +1,5 @@
 <script setup>
-import { CdxIcon, CdxButton } from '@wikimedia/codex'
+import { CdxButton } from '@wikimedia/codex'
 import { createTab } from '@/extension'
 
 const wikipediaLoginURL = 'https://en.wikipedia.org/w/index.php?title=Special:UserLogin'

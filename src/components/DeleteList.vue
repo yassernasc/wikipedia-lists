@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { CdxDialog, CdxSelect } from '@wikimedia/codex'
+import { CdxDialog } from '@wikimedia/codex'
 import { useWikiStore } from '@/stores'
 
 const wiki = useWikiStore()

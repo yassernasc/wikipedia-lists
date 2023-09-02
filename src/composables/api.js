@@ -100,18 +100,10 @@ export const useApi = () => {
     }
   }
 
-  return {
-    addArticle,
-    createList,
-    deleteArticle,
-    deleteList,
-    getArticles,
-    getLists,
-    updateList,
-    updateList,
-  }
+  return { addArticle, createList, deleteArticle, deleteList, getArticles, getLists, updateList }
 }
 
+/*
 const hardcodedLists = [
   {
     id: 3648265,
@@ -158,3 +150,4 @@ const hardcodedArticles = [
     title: 'List of terminal emulators',
   },
 ]
+*/
