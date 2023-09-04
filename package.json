@@ -15,7 +15,8 @@
     "postbuild": "cp -r assets/*.png dist/assets",
     "pack:firefox": "npm run build:firefox && web-ext build -o -s dist",
     "format": "prettier --write src/",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "zip": "zip -r code.zip *.org *.txt assets/*.png *.html *.json *.js src/"
   },
   "dependencies": {
     "@vueuse/core": "^10.3.0",
