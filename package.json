@@ -8,14 +8,14 @@
   },
   "scripts": {
     "dev": "vite",
-    "dev:firefox": "web-ext run --browser-console --devtools",
+    "dev:firefox": "npm run build:firefox && cd dist && web-ext run --browser-console --devtools",
     "build": "vite build",
     "build:chrome": "npm run build && cp manifest.chrome.json dist/manifest.json",
     "build:firefox": "npm run build && cp manifest.firefox.json dist/manifest.json",
     "postbuild": "cp -r assets/*.png dist/assets",
+    "pack:firefox": "npm run build:firefox && web-ext build -o -s dist",
     "format": "prettier --write src/",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "pack:firefox": "npm run build:firefox && web-ext build -o -s dist"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
     "@vueuse/core": "^10.3.0",

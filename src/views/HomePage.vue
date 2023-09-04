@@ -38,7 +38,7 @@ const onMenuClick = ({ item, operation }) => {
     </template>
   </Header>
   <List
-    :items="wiki.lists"
+    :items="wiki.sortedLists"
     :menuItems="menuItems"
     @item-select="onSelect"
     @menu-click="onMenuClick"
