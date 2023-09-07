@@ -13,7 +13,9 @@
     "build:chrome": "npm run build && cp manifest.chrome.json dist/manifest.json",
     "build:firefox": "npm run build && cp manifest.firefox.json dist/manifest.json",
     "postbuild": "cp -r assets/*.png dist/assets",
-    "pack:firefox": "npm run build:firefox && web-ext build -o -s dist",
+    "pack": "web-ext build -o -s dist",
+    "pack:chrome": "npm run build:chrome && npm run pack",
+    "pack:firefox": "npm run build:firefox && npm run pack",
     "format": "prettier --write src/",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "zip": "zip -r code.zip *.org *.txt assets/*.png *.html *.json *.js src/"

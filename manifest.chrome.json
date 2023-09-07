@@ -9,6 +9,5 @@
     "default_title": "Wikipedia Lists",
     "default_popup": "index.html"
   },
-  "permissions": ["cookies"],
   "host_permissions": ["*://*.wikipedia.org/"]
 }

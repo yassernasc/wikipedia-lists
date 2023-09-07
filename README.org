@@ -23,7 +23,7 @@ I have found Wikipedia's Reading Lists to be a wonderful way to organize researc
 ** Features and Roadmap [2/5]
 
 - [X] Auth
-  - [X] Use cookies to get session tokens
+  - [X] Use session tokens
   - [X] Login Needed page
 - [-] Lists [6/7]
   - [X] Show lists
