@@ -18,7 +18,7 @@ const slots = useSlots()
 header {
   align-items: center;
   background-color: var(--background-color-base);
-  border-bottom: var(--border-base);
+  box-shadow: var(--box-shadow-drop-small);
   display: flex;
   height: var(--spacing-400);
   padding: 0 8px 0 24px;
@@ -29,6 +29,7 @@ header {
 header h1 {
   font-family: var(--font-family-serif);
   font-size: var(--font-size-x-large);
+  text-transform: capitalize;
 }
 
 .ellipsis {

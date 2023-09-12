@@ -5,6 +5,7 @@ import { cdxIconAdd as addIcon, cdxIconReload as reloadIcon } from '@wikimedia/c
 import { useWikiStore } from '@/stores'
 import ListForm from '@/components/ListForm.vue'
 import DeleteList from '@/components/DeleteList.vue'
+import iconURL from '../../assets/icon_48x48.png'
 
 const wiki = useWikiStore()
 const formRef = ref()
@@ -30,6 +31,9 @@ const onMenuClick = ({ item, operation }) => {
 
 <template>
   <Header>
+    <template v-slot:icon>
+      <img :src="iconURL" />
+    </template>
     <template v-slot:actions>
       <div class="actions" @click="wiki.deselectList">
         <cdx-icon class="icon" :icon="reloadIcon" @click="wiki.reloadLists" />
@@ -53,5 +57,11 @@ const onMenuClick = ({ item, operation }) => {
   margin-right: 4px;
   display: flex;
   gap: 7px;
+}
+
+img {
+  height: 26px;
+  width: 26px;
+  margin: 2px 10px 0 0;
 }
 </style>

@@ -28,7 +28,7 @@ auth.authenticate()
 
 <style scoped>
 .container {
-  height: 100vh;
+  height: 55vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +54,7 @@ auth.authenticate()
   width: 6px;
   height: 18px;
   border-radius: 20%;
-  background: var(--color-progressive);
+  background: var(--color-subtle);
 }
 .lds-spinner div:nth-child(1) {
   transform: rotate(0deg);
