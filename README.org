@@ -4,7 +4,15 @@
 
 Browser extension to use Wikipedia's Reading Lists, just like in the apps
 
-** Why?
+** Install
+
+#+ATTR_HTML: :width 48px
+[[https://addons.mozilla.org/addon/wiki-lists/][https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_128x128.png]]
+
+#+ATTR_HTML: :width 48px
+[[https://chrome.google.com/webstore/detail/wikipedia-lists/jdlmiegaioijhgocehohlnplflehmjni/][https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_128x128.png]]
+
+** Context
 
 The year was 2018 and Wikipedia released [[https://wikimediafoundation.org/news/2018/05/25/synced-reading-lists/][Synced reading lists for its mobile apps]], but what about the Browser and Desktop? 5 years later, the [[https://www.mediawiki.org/wiki/Wikimedia_Apps/Reading_list_browser_extension][official extension]] remains pretty minimalist.
 
