@@ -6,11 +6,8 @@ Browser extension to use Wikipedia's Reading Lists, just like in the apps
 
 ** Install
 
-#+ATTR_HTML: :width 48px
-[[https://addons.mozilla.org/addon/wiki-lists/][https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_128x128.png]]
-
-#+ATTR_HTML: :width 48px
-[[https://chrome.google.com/webstore/detail/wikipedia-lists/jdlmiegaioijhgocehohlnplflehmjni/][https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_128x128.png]]
+[[https://addons.mozilla.org/addon/wiki-lists/][https://raw.githubusercontent.com/alrra/browser-logos/main/src/firefox/firefox_48x48.png]]
+[[https://chrome.google.com/webstore/detail/wikipedia-lists/jdlmiegaioijhgocehohlnplflehmjni/][https://raw.githubusercontent.com/alrra/browser-logos/main/src/chrome/chrome_48x48.png]]
 
 ** Context
 
@@ -27,6 +24,36 @@ I have found Wikipedia's Reading Lists to be a wonderful way to organize researc
 ** Demo
 
 [[./assets/demo.gif]]
+
+** Running and Building from source
+
+warn: not tested on windows environment
+
+*First steps*
+
+#+begin_src shell
+  # install node.js, version >=18
+  git clone https://github.com/yassernasc/wikipedia-lists.git
+  npm install
+#+end_src
+
+*Run on Firefox*
+
+#+begin_src shell
+  npm run dev:firefox
+#+end_src
+
+*Build for Firefox*
+
+#+begin_src shell
+  npm run build:firefox
+#+end_src
+
+*Build for Chrome*
+
+#+begin_src shell
+  npm run build:chrome
+#+end_src
 
 ** Features and Roadmap [2/5]
 
@@ -53,27 +80,3 @@ I have found Wikipedia's Reading Lists to be a wonderful way to organize researc
   - [X] Chrome
   - [X] Firefox
   - [ ] Safari
-
-** Running and Building from source
-
-warn: not tested on windows environment
-
-*First steps*
-
-#+begin_src shell
-  # install node.js, version >=18
-  git clone https://github.com/yassernasc/wikipedia-lists.git
-  npm install
-#+end_src
-
-*Run on Firefox*
-
-#+begin_src shell
-  npm run dev:firefox
-#+end_src
-
-*Build for Firefox*
-
-#+begin_src shell
-  npm run build:firefox
-#+end_src
